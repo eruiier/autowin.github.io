@@ -1,4 +1,3 @@
-
 -- Persistent Teleport and Sit Logic
 local plr = game.Players.LocalPlayer
 local chr = plr.Character or plr.CharacterAdded:Wait()
