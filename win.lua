@@ -10,6 +10,17 @@ local player = game.Players.LocalPlayer
 local backpack = player:WaitForChild("Backpack")
 local humanoid = player.Character:WaitForChild("Humanoid")
 
+task.spawn(function()
+    task.wait(40) -- Wait for 40 seconds
+    print("Auto headshot functionality restarted!")
+    while true do
+        task.wait(0.1) -- Add a slight delay for smoother repetition
+        autoShoot() -- Trigger auto-shoot logic
+    end
+end)
+
+
+
 -- Define the functions
 local function spinCamera()
     -- Function to spin the camera
