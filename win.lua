@@ -10,6 +10,42 @@ local player = game.Players.LocalPlayer
 local backpack = player:WaitForChild("Backpack")
 local humanoid = player.Character:WaitForChild("Humanoid")
 
+-- Define the functions
+local function spinCamera()
+    -- Function to spin the camera
+    local player = game.Players.LocalPlayer
+    local camera = workspace.CurrentCamera
+    camera.CameraType = Enum.CameraType.Scriptable -- Sets camera to be controlled by script
+
+    local rotationSpeed = 1 -- Adjust rotation speed here
+
+    game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
+        camera.CFrame = camera.CFrame * CFrame.Angles(0, math.rad(rotationSpeed), 0)
+    end)
+end
+
+local function handleProximityPrompt()
+    -- Function to handle proximity prompt logic
+    local proxservice = game:GetService("ProximityPromptService")
+    proxservice.PromptShown:Connect(function(prox)
+        fireproximityprompt(prox)
+    end)
+end
+
+-- Spawn tasks
+task.spawn(function()
+    -- Wait for 2 minutes (120 seconds)
+    task.wait(120)
+
+    -- Execute the camera spinning logic
+    spinCamera()
+
+    -- Execute the proximity prompt logic
+    handleProximityPrompt()
+end)
+
+
+
 local function equipRevolver()
     local revolver = backpack:FindFirstChild("Revolver") or humanoid:FindFirstChild("Revolver")
     if revolver then
