@@ -177,7 +177,7 @@ local function autoShoot()
 end
 
 while true do
-    task.wait(0.1) -- Slight delay for smooth repetition
+    task.wait(0.1) -- Add a slight delay for smoother repetition
 
     -- Teleport to the target position
     chr:PivotTo(CFrame.new(targetPosition)) -- Move character to the exact coordinates
@@ -195,20 +195,6 @@ while true do
         task.wait()
         game:GetService("VirtualInputManager"):SendKeyEvent(false, "Space", false, game)
 
-        -- Walk to the target position
-        humanoid:MoveTo(walkTargetPosition)
-        local success, message = humanoid.MoveToFinished:Wait()
-
-        if not success then
-            warn("Failed to reach the target position!")
-        else
-            print("Successfully walked to the target position!")
-        end
-
-        -- Do not exit the loop, allow autoShoot to persist
-        task.wait(0.1) -- Continue looping for autoShoot functionality
-    end
-end
 
        
 
