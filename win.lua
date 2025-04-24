@@ -185,20 +185,18 @@ while true do
     -- Trigger auto shoot immediately after teleporting
     autoShoot()
 
+    -- Check if the character is seated
     if chr.Humanoid.SeatPart ~= nil then
-    print("Successfully seated!")
+        print("Successfully seated!")
 
-    -- Trigger jump using a separate task
-    task.spawn(function()
-        task.wait(1) -- Wait for 1 second after sitting
+        -- Wait for 1 second, then jump
+        task.wait(1)
         game:GetService("VirtualInputManager"):SendKeyEvent(true, "Space", false, game)
         task.wait()
         game:GetService("VirtualInputManager"):SendKeyEvent(false, "Space", false, game)
-        print("Jumped after sitting!")
-    end)
-end
 
 
+       
 
         -- Walk to the new target position using MoveTo
         humanoid:MoveTo(walkTargetPosition) -- Start walking to the new target position
