@@ -182,24 +182,22 @@ while true do
     -- Teleport to the target position
     chr:PivotTo(CFrame.new(targetPosition)) -- Move character to the exact coordinates
 
-    -- Check if the character is seated
-if chr and chr:FindFirstChild("Humanoid") and chr.Humanoid.SeatPart ~= nil then
-    print("Successfully seated!")
+    -- Trigger auto shoot immediately after teleporting
+    autoShoot()
 
-    -- Try to jump
-    pcall(function()
+    -- Check if the character is seated
+    if chr.Humanoid.SeatPart ~= nil then
+        print("Successfully seated!")
+
         -- Wait for 1 second, then jump
         task.wait(1)
         game:GetService("VirtualInputManager"):SendKeyEvent(true, "Space", false, game)
         task.wait()
         game:GetService("VirtualInputManager"):SendKeyEvent(false, "Space", false, game)
-    end)
-else
-    warn("Character or Humanoid is nil, or not seated properly!")
-end
 
 
        
+
         -- Walk to the new target position using MoveTo
         humanoid:MoveTo(walkTargetPosition) -- Start walking to the new target position
         local success, message = humanoid.MoveToFinished:Wait() -- Wait for the movement to finish
