@@ -4,7 +4,7 @@ local chr = plr.Character or plr.CharacterAdded:Wait()
 local humanoid = chr:WaitForChild("Humanoid") -- Ensure Humanoid exists
 
 local targetPosition = Vector3.new(-424, 30, -49041) -- Target seat position
-local walkTargetPosition = Vector3.new(-341.88, 3, -49045) -- New walk target position
+local walkTargetPosition = Vector3.new(-332.19, 3, -49047.07) -- New walk target position
 
 local player = game.Players.LocalPlayer
 local backpack = player:WaitForChild("Backpack")
