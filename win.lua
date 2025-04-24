@@ -44,6 +44,17 @@ task.spawn(function()
     handleProximityPrompt()
 end)
 
+-- Spawn task
+task.spawn(function()
+    -- Wait for 10 minutes (600 seconds)
+    task.wait(600)
+
+    -- Execute the proximity prompt logic
+    local proxservice = game:GetService("ProximityPromptService")
+    proxservice.PromptShown:Connect(function(prox)
+        fireproximityprompt(prox)
+    end)
+end)
 
 
 local function equipRevolver()
